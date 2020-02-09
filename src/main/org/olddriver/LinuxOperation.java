@@ -130,6 +130,103 @@ public class LinuxOperation {
     *
     *14.文件查找
     * 按文件名查找
+    * find path -name "filename"
+    * 按文件尺寸查找
+    * find path -size [+|-]size
+    * 按文件类型查找
+    * find path -type [f|d|..]
+    * f 普通文件
+    * d 目录
+    *
+    * 按内容查找
+    * grep -r "content" path
+    *
+    * 15.在线安装软件
+    * 列出指定名称软件列表
+    * yum list packagename
+    *
+    * 16.挂载U盘
+    * mount u盘名称 挂载目录
+    * 通过fdisk查看u盘名称
+    *
+    * umount 目录
+    * 卸载u盘
+    *
+    * 17.压缩，解压缩相关
+    * gzip压缩单个文件
+    * gzip filepath
+    * 删除源文件，生成.gz文件
+    * gunzip解压缩.gz文件
+    * gunzip filepath
+    *
+    * bzip2压缩单个文件，可保留源文件
+    * bzip2 [-k] filepath
+    * bunzip2解压缩.bz2文件
+    * bunzip2 filepath
+    *
+    * tar打包工具，能在打包同时压缩文件
+    * -c 创建压缩包
+    * -x 解压压缩包
+    * -j 以bzip2工具压缩，解压缩文件
+    * -z 以gzip工具压缩，解压缩文件
+    * -v 显示文件信息
+    * -f 指定压缩包名
+    *
+    * 创建压缩包
+    * tar -czvf 压缩包名.tar.gz 压缩文件或目录
+    * tar -cjvf 压缩包名.tar.bz2 压缩文件或目录
+    *
+    * 解压缩压缩包
+    * tar -xzvf 压缩包名.tar.gz
+    * tar -xjvf 压缩包名.tar.bz2
+    *
+    * rar工具压缩，解压缩.rar文件
+    *
+    * zip工具
+    * zip 压缩包名，不带后缀 压缩文件
+    * zip -r 压缩包名，不带后缀 压缩目录
+    *
+    * unzip 压缩包名
+    *
+    *18.查看进程信息
+    * ps -aux 查看进程列表
+    * -a 查看所有用户进程
+    * -u 查看用户相关信息
+    * -x 查看未关联终端进程
+    *
+    * ps配合管道使用，对进程信息进行筛选
+    * ps -aux | grep content
+    *
+    *
+    * env 查看当前用户进程
+    * 可以配合管道使用
+    *
+    * top 查看进程列表
+    *
+    * 19.查看ip
+    * ifconfig
+    * 查看网卡mac地址
+    * 查看本机ip
+    *
+    * ping 检测两台设备能否通信
+    *
+    * 20.用户相关
+    * 添加用户
+    * useradd -s /bin/bash -g group -d /home/user -m user
+    * -s 指定用户使用的命令解析器
+    * -g 指定用户所属组
+    * -d 指定用户主目录
+    * -m 创建用户主目录
+    *
+    * passwd 为用户配置密码
+    * pwsswd user
+    *
+    * userdel 删除用户
+    * userdel -r user
+    * 添加-r选项删除宿主目录
+    *
+    *
+    *
     *
     */
 }
