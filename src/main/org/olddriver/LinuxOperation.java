@@ -122,6 +122,11 @@ public class LinuxOperation {
     * w-写权限
     * x-执行权限
     *
+    * 数字表示法
+    * 1-执行权限
+    * 2-写权限
+    * 4-读权限
+    *
     * 修改文件所有者
     * chown newown filename
     *
@@ -145,8 +150,22 @@ public class LinuxOperation {
     * grep -r "content" path
     *
     * 15.在线安装软件
+    * yum centos系统的软件包管理程序
+    * dnf centos8系统软件包管理程序
+    *
+    * 通过修改/etc/yum.repos.d中CentOS-Base.repo配置文件 修改软件数据源
+    *
+    * 删除缓存的无用软件包
+    * dnf clean all
+    *
+    * 生成软件包缓存
+    * dnf makecache
+    *
     * 列出指定名称软件列表
-    * yum list packagename
+    * dnf list packagename
+    *
+    * 删除不被依赖的软件包
+    * dnf autoremove
     *
     * 16.挂载U盘
     * mount u盘名称 挂载目录
@@ -220,6 +239,7 @@ public class LinuxOperation {
     * -g 指定用户所属组
     * -d 指定用户主目录
     * -m 创建用户主目录
+    * 用户必须属于某个组
     *
     * passwd 为用户配置密码
     * pwsswd user
@@ -227,6 +247,9 @@ public class LinuxOperation {
     * userdel 删除用户
     * userdel -r user
     * 添加-r选项删除宿主目录
+    *
+    * 切换至超级用户
+    * su
     *
     * 21.echo命令
     * 在终端输出字符串
