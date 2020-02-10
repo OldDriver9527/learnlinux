@@ -96,8 +96,11 @@ public class LinuxOperation {
     * 使用绝对路径使软链接可以在任意位置使用
     * ln 文件名 硬链接名
     *
-    * 10.查看文件行数
+    * 10.文件相关操作
+    * 查看文件行数
     * wc filename
+    * 查看文件详细信息
+    * stat filename
     *
     * 11.查看目录占用空间
     * du -h dirname
@@ -128,7 +131,7 @@ public class LinuxOperation {
     * 修改文件所属组
     * chgrp newgroup filename
     *
-    *14.文件查找
+    * 14.文件查找
     * 按文件名查找
     * find path -name "filename"
     * 按文件尺寸查找
@@ -282,5 +285,24 @@ public class LinuxOperation {
     * s/oldstr/newstr/g 替换光标所在行中所有子串
     * %s/oldstr/newstr/g 替换文件中所有子串
     *
+    * 23.查看主机名
+    * hostname
+    *
+    * 24.查看在线用户
+    * who
+    *
+    * 25.查看系统信息
+    * uname
+    *
+    * 26.查看内存及swap分区使用情况
+    * free
+    *
+    * 27.重启，关机
+    * 重启
+    * reboot
+    * shutdown -r now
+    *
+    * 关机
+    * shutdown -h now
     */
 }
