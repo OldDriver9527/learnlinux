@@ -99,8 +99,8 @@ public class LinuxOperation {
     * 10.文件相关操作
     * 查看文件行数
     * wc filename
-    * 查看文件详细信息
-    * stat filename
+    * 查看文件或目录详细信息
+    * stat filename/dirname
     *
     * 11.查看目录占用空间
     * du -h dirname
@@ -199,8 +199,8 @@ public class LinuxOperation {
     * tar -cjvf 压缩包名.tar.bz2 压缩文件或目录
     *
     * 解压缩压缩包
-    * tar -xzvf 压缩包名.tar.gz
-    * tar -xjvf 压缩包名.tar.bz2
+    * tar -xzvf 压缩包名.tar.gz [-C 解压目录]
+    * tar -xjvf 压缩包名.tar.bz2 [-C 解压目录]
     *
     * rar工具压缩，解压缩.rar文件
     *
@@ -208,17 +208,16 @@ public class LinuxOperation {
     * zip 压缩包名，不带后缀 压缩文件
     * zip -r 压缩包名，不带后缀 压缩目录
     *
-    * unzip 压缩包名
+    * unzip 压缩包名 [-d 解压目录]
     *
     * 18.查看进程信息
-    * ps -aux 查看进程列表
+    * ps -aux 查看瞬时进程列表
     * -a 查看所有用户进程
     * -u 查看用户相关信息
     * -x 查看未关联终端进程
     *
     * ps配合管道使用，对进程信息进行筛选
     * ps -aux | grep content
-    *
     *
     * env 查看当前用户进程
     * 可以配合管道使用
@@ -248,8 +247,9 @@ public class LinuxOperation {
     * userdel -r user
     * 添加-r选项删除宿主目录
     *
-    * 切换至超级用户
-    * su
+    * 切换用户
+    * su username
+    * su后不加用户名切换至超级用户
     *
     * 21.echo命令
     * 在终端输出字符串
