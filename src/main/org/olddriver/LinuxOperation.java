@@ -327,5 +327,7 @@ public class LinuxOperation {
     *
     * 关机
     * shutdown -h now
+    *
+    *
     */
 }
