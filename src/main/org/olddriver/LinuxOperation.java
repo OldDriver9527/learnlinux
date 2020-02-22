@@ -20,7 +20,8 @@ public class LinuxOperation {
     * ctrl + u 删除光标前所有字符
     *
     * 3.目录结构
-    * /     根目录
+    * Linux目录结构为树形结构
+    * /     根目录，目录结构中的顶层目录
     * /bin  存放可执行文件
     * /boot 存放开机启动项
     * /dev  存放设备文件
@@ -30,7 +31,7 @@ public class LinuxOperation {
     * /media 自动挂载设备目录
     * /mnt  手动挂载设备目录
     * /root 超级用户目录
-    * /usr  用户软件资源目录
+    * /usr  用户软件资源目录，一般将用户手动安装的软件放在/usr/local下
     * /var  存放运行时会改变的文件
     *
     * 4.切换目录
@@ -58,8 +59,8 @@ public class LinuxOperation {
     * 7.pwd 打印当前工作目录
     * 8.目录，文件相关操作
     * mkdir 创建目录
-    * mkdir [-p] dirname
-    * -p 表示父目录若不存在，创建父目录
+    * mkdir [-option] dirpath
+    * -p 表示路径中父目录若不存在，创建父目录(parents)
     *
     * rmdir 删除空目录
     * rmdir dirname
@@ -92,9 +93,11 @@ public class LinuxOperation {
     * -f 追踪显示
     *
     * 9.创建链接
-    * ln -s 绝对路径 软链接名称
-    * 使用绝对路径使软链接可以在任意位置使用
+    * ln -s 绝对路径 符号链接名称
+    * 创建符号链接，使用绝对路径使符号链接可以在任意位置使用
     * ln 文件名 硬链接名
+    *
+    * 使用rm删除符号链接时，符号链接名后不加/
     *
     * 10.文件相关操作
     * 查看文件行数
@@ -102,10 +105,10 @@ public class LinuxOperation {
     * 查看文件或目录详细信息
     * stat filename/dirname
     *
-    * 11.查看目录占用空间
+    * 11.查看目录磁盘空间使用情况
     * du -h dirname
     *
-    * 12.查看磁盘占用空间
+    * 12.查看磁盘空间使用情况
     * df -h
     *
     * 13.文件权限相关操作
@@ -126,6 +129,7 @@ public class LinuxOperation {
     * 1-执行权限
     * 2-写权限
     * 4-读权限
+    * chmod XXX filename
     *
     * 修改文件所有者
     * chown newown filename
@@ -148,6 +152,7 @@ public class LinuxOperation {
     *
     * 按内容查找
     * grep -r "content" path
+    * -r 当查找目录中文件时需添加递归选项
     *
     * 15.在线安装软件
     * yum centos系统的软件包管理程序
@@ -191,7 +196,7 @@ public class LinuxOperation {
     * -x 解压压缩包
     * -j 以bzip2工具压缩，解压缩文件
     * -z 以gzip工具压缩，解压缩文件
-    * -v 显示文件信息
+    * -v 显示压缩信息
     * -f 指定压缩包名
     *
     * 创建压缩包
@@ -250,6 +255,13 @@ public class LinuxOperation {
     * 切换用户
     * su username
     * su后不加用户名切换至超级用户
+    *
+    * 添加组
+    * groupadd groupname
+    * 查看/etc/group配置文件可以查看所有组
+    *
+    * 删除组
+    * groupdel groupname
     *
     * 21.echo命令
     * 在终端输出字符串
