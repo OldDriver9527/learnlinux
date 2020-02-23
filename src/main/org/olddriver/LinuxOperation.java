@@ -340,6 +340,7 @@ public class LinuxOperation {
     * 关机
     * shutdown -h now
     *
-    *
+    * 28.使用url进行数据或文件传输
+    * curl url
     */
 }
