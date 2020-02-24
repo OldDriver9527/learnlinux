@@ -61,7 +61,7 @@ public class Docker {
      * docker 运行docker可执行二进制文件
      * pull 从registry拉取镜像
      *
-     * 在容器中运行命令
+     * 根据镜像创建容器，在容器中运行命令
      * docker run [option] 镜像 [命令]
      * docker run -it --rm ubuntu:16.04 bash
      * -it i以交互模式运行容器
