@@ -61,8 +61,8 @@ public class Docker {
      * docker 运行docker可执行二进制文件
      * pull 从registry拉取镜像
      *
-     * 在容器中运行命令
-     * docker run [option] 镜像 [命令]
+     * 根据镜像创建容器并运行，在容器中运行命令
+     * docker run [option] repository:tag [命令]
      * docker run -it --rm ubuntu:16.04 bash
      * -it i以交互模式运行容器
      *     t分配伪终端
@@ -70,7 +70,11 @@ public class Docker {
      *
      * 查看所有本地镜像列表
      * docker image ls/docker images
-     * docker hub 显示的镜像尺寸为压缩后尺寸
+     *
+     * 镜像尺寸
+     * 通过docker image ls 查看的镜像尺寸与docker hub上不同
+     * docker hub显示的镜像尺寸为压缩后尺寸
+     * 所有镜像尺寸求和并非是镜像实际磁盘占用情况，因为镜像采用分层存储
      *
      * 虚悬镜像(dangling image)
      * 仓库名，标签为none的镜像为虚悬镜像
@@ -88,6 +92,7 @@ public class Docker {
      * docker image rm image_id
      * docker image rm repository:tag
      * docker rmi image_id
+     *
      *
      */
 }
