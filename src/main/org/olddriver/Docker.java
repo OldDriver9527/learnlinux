@@ -17,7 +17,7 @@ public class Docker {
     * 镜像采用分层存储结构
     *
     * Docker Container
-    * docker容器是docker镜像的一个可运行实例
+    * docker容器是docker镜像的一个可运行实例，实质是一个进程
     *
     * Docker Repository Docker Registry
     * docker注册中心包含多个docker仓库
@@ -61,12 +61,13 @@ public class Docker {
      * docker 运行docker可执行二进制文件
      * pull 从registry拉取镜像
      *
-     * 根据镜像创建容器并运行，在容器中运行命令
+     * 新建并启动容器，在容器中运行命令
      * docker run [option] repository:tag [命令]
      * docker run -it --rm ubuntu:16.04 bash
      * -it i以交互模式运行容器
      *     t分配伪终端
-     * --rm 容器推出后删除容器
+     * --rm 容器退出后删除容器
+     * -p 宿主机端口:容器端口 将宿主机端口映射到容器中服务使用的端口
      *
      * 查看所有本地镜像列表
      * docker image ls/docker images
@@ -92,6 +93,48 @@ public class Docker {
      * docker image rm image_id
      * docker image rm repository:tag
      * docker rmi image_id
+     *
+     * 在运行的容器中执行命令
+     * docker exec [option] 容器id 命令
+     * docker exec -it 容器id bash
+     *
+     * 使用Dockerfile定制镜像
+     * Dockerfile为一文本文件，其中定义instruction(docker指令)，每条指令构建一层镜像
+     *
+     * 构建镜像
+     * docker build [option] 镜像构建上下文
+     * -t 指定镜像仓库名，标签
+     * 镜像构建上下文
+     * docker在服务端构建镜像，而客户端会将镜像构建上下文包含的内容打包发送到服务端，以便服务端获取到必要文件
+     *
+     * FROM指令 用于指定基础镜像 FROM repository:tag
+     *          若以scratch为基础镜像，表示不以任何镜像作为基础镜像
+     *
+     * RUN指令 用于执行命令行命令，RUN指令分为两种格式
+     *          shell格式：RUN 命令
+     *          exec格式
+     *          构建过程中，每一个RUN指令都会启动一个容器，执行命令，构建成功容器自动销毁
+     *
+     * COPY指令 复制文件
+     * 分为两种格式
+     * 格式1：COPY 源路径 目标路径
+     * COPY指令将镜像构建上下文中的文件复制到镜像目表路径
+     * 源路径为相对路径，相对于镜像构建上下文
+     *
+     * WORKDIR指令 指定工作目录，若指定目录不存在会创建目录
+     * WORKDIR 工作目录
+     * 指定WORKDIR后，各层工作目录就会变为指定目录
+     *
+     * ADD指令 高级复制
+     * 格式1：ADD 源路径 目标路径
+     * 当源路径为tar压缩包，ADD指令能够将压缩包自动解压到镜像目标路径
+     * 源路径为相对路径，相对于镜像构建上下文
+     * 需要自动解压缩时才使用ADD，ADD指令会导致构建缓慢
+     *
+     * EXPOSE指令 声明端口
+     * 声明docker容器中服务使用的端口
+     *
+     *
      *
      *
      */
