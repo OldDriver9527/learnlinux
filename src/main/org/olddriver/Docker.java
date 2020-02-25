@@ -68,7 +68,9 @@ public class Docker {
      *     t分配伪终端
      * --rm 容器退出后删除容器
      * -p 宿主机端口:容器端口 将宿主机端口映射到容器中服务使用的端口
-     *
+     * -P 将宿主机随机端口映射到容器服务使用的端口
+     * --name name 指定容器名称
+     * -d 后台运行容器，不占用宿主机终端
      * 查看所有本地镜像列表
      * docker image ls/docker images
      *
@@ -81,61 +83,72 @@ public class Docker {
      * 仓库名，标签为none的镜像为虚悬镜像
      * 当官方镜像维护后，再次使用docker pull拉取镜像，本地旧镜像仓库名，标签会设为none，成为虚悬镜像
      * docker build也会导致虚悬镜像产生
-     * 通过
-     * docker image ls -f dangling=true
      * 查看虚悬镜像
+     * docker image ls -f dangling=true
      * -f 根据指定条件过滤镜像
-     * 通过
-     * docker image prune
      * 删除虚悬镜像
+     * docker image prune
      *
      * 删除本地镜像
      * docker image rm image_id
      * docker image rm repository:tag
      * docker rmi image_id
      *
-     * 在运行的容器中执行命令
-     * docker exec [option] 容器id 命令
-     * docker exec -it 容器id bash
-     *
      * 使用Dockerfile定制镜像
      * Dockerfile为一文本文件，其中定义instruction(docker指令)，每条指令构建一层镜像
-     *
      * 构建镜像
      * docker build [option] 镜像构建上下文
      * -t 指定镜像仓库名，标签
-     * 镜像构建上下文
-     * docker在服务端构建镜像，而客户端会将镜像构建上下文包含的内容打包发送到服务端，以便服务端获取到必要文件
-     *
+     * 镜像构建上下文是一路径。docker在服务端构建镜像，而客户端会将镜像构建上下文包含的内容打包发送到服务端，
+     * 以便服务端获取到必要文件
+     * docker instruction
      * FROM指令 用于指定基础镜像 FROM repository:tag
      *          若以scratch为基础镜像，表示不以任何镜像作为基础镜像
      *
      * RUN指令 用于执行命令行命令，RUN指令分为两种格式
-     *          shell格式：RUN 命令
-     *          exec格式
-     *          构建过程中，每一个RUN指令都会启动一个容器，执行命令，构建成功容器自动销毁
+     *         shell格式：RUN 命令
+     *         exec格式
+     *         构建过程中，每一个RUN指令都会启动一个容器，执行命令，构建成功容器自动销毁
      *
      * COPY指令 复制文件
-     * 分为两种格式
-     * 格式1：COPY 源路径 目标路径
-     * COPY指令将镜像构建上下文中的文件复制到镜像目表路径
-     * 源路径为相对路径，相对于镜像构建上下文
+     *          分为两种格式
+     *          格式1：COPY 源路径 目标路径
+     *          COPY指令将镜像构建上下文中的文件复制到镜像目表路径
+     *          源路径为相对路径，相对于镜像构建上下文
      *
      * WORKDIR指令 指定工作目录，若指定目录不存在会创建目录
-     * WORKDIR 工作目录
-     * 指定WORKDIR后，各层工作目录就会变为指定目录
+     *          WORKDIR 工作目录
+     *          指定WORKDIR后，各层工作目录就会变为指定目录
      *
      * ADD指令 高级复制
-     * 格式1：ADD 源路径 目标路径
-     * 当源路径为tar压缩包，ADD指令能够将压缩包自动解压到镜像目标路径
-     * 源路径为相对路径，相对于镜像构建上下文
-     * 需要自动解压缩时才使用ADD，ADD指令会导致构建缓慢
+     *         格式1：ADD 源路径 目标路径
+     *         当源路径为tar压缩包，ADD指令能够将压缩包自动解压到镜像目标路径
+     *         源路径为相对路径，相对于镜像构建上下文
+     *         需要自动解压缩时才使用ADD，ADD指令会导致构建缓慢
      *
      * EXPOSE指令 声明端口
-     * 声明docker容器中服务使用的端口
+     *         声明docker容器中服务使用的端口
      *
+     * 操作容器
+     * 查看容器列表
+     * docker container ls [option]/docker ps [option]
+     * -a 显示所有容器，默认仅显示正在运行的容器
+     * 启动已停止容器
+     * docker container start 容器id
+     * 停止正在运行容器
+     * docker container stop 容器id
+     * 进入容器，在运行容器中执行命令
+     * docker exec [option] 容器id 命令
+     * docker exec -it 容器id bash
+     * 删除容器
+     * 删除所有未运行容器
+     * docker container prune
      *
-     *
-     *
+     * volume数据卷
+     * docker容器中的数据为非持久化数据，随容器的销毁而销毁
+     * 可通过数据卷实现将数据存储在宿主机，实现数据持久化
+     * 数据卷是宿主机上一个特殊目录，可以将数据卷挂载到镜像目录
+     * docker run -v选项将宿主机数据卷绑挂载到镜像目录
+     * 将项目部署tomcat容器时可直接将项目所在目录挂载到/usr/local/tomcat/webapps/ROOT/
      */
 }
