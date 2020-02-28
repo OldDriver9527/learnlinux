@@ -43,6 +43,7 @@ public class Docker {
         lvm2
      * iii.安装最新版本docker引擎
      * yum install docker-ce docker-ce-cli containerd.io
+     * 安装最新版本docker，可能提示containerd.io版本过低，需将旧版本删除，安装新版本
      *
      * 配置Docker镜像加速器
      * docker默认从docker hub拉取镜像，可配置镜像加速器，从国内注册中心拉取镜像

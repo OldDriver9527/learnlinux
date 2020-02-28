@@ -16,7 +16,9 @@ public class DockerCompose {
     * 2.为文件添加执行权限
     * chmod +x /usr/local/bin/docker-compose
     *
-    *
-    *
+    * docker compose命令
+    * docker-compose [option] [command] [args]
+    * up 新建docker-compose中容器并运行
+    * down 停止docker-compose.yml中容器
      */
 }
